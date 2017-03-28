@@ -1,1 +1,1 @@
-Solutions to Codeforces problems
+Solutions to problems from CF, CodeChef, SPOJ
