@@ -25,14 +25,14 @@ long long int binexp_iter(long long int a, long long int exp) {
 }
 
 int main() {
-//     for (long long int i = 0; i < 10; i ++) {
-// 	cout << "Recursive 2^" << i << " " << binexp_rec(2, i) << endl;
-// 	cout << "Iterative 2^" << i << " " << binexp_iter(2, i) << endl;
-// 	cout << endl;
-//     }
+    // for (long long int i = 0; i < 10; i ++) {
+    //     cout << "Recursive 2^" << i << " " << binexp_rec(2, i) << endl;
+    //     cout << "Iterative 2^" << i << " " << binexp_iter(2, i) << endl;
+    //     cout << endl;
+    // }
     long long int n;
     cin >> n;
     cout << binexp_rec(4, n-3)*(9*n - 3) << endl;
-//     cout << binexp_iter(4, n-3)*(9*n - 3) << endl;
+    // cout << binexp_iter(4, n-3)*(9*n - 3) << endl;
     return 0;
 }
