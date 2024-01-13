@@ -1,58 +1,38 @@
-// http://codeforces.com/problemset/problem/550/A
-#include <iostream>
-#include <vector>
-#include <string>
+// https://codeforces.com/problemset/problem/550/A
+
+#include <bits/stdc++.h>
 
 using namespace std;
 
-typedef long long ll;
+int find_first(const string& s, int beg, const string& to_find) {
+    for (int i = beg; i < s.length(); i++) {
+	if (s.substr(i, to_find.length()) == to_find)
+	    return i;
+    }
+    return s.length();
+}
 
-int main(int argc, char ** argv){
-	string s;
-	cin >> s;
-	ll idx1 = -1, idx2 = -1;
-	ll n = s.length();
-	for(ll i=0; i<n-1; i++){
-		if(s[i] == 'A' && s[i+1] == 'B'){
-			idx1 = i;
-			break;
-		}
-	}
-	for(ll i=n-1; i>0; i--){
-		if(s[i] == 'A' && s[i-1] == 'B'){
-			idx2 = i-1;
-			break;
-		}
-	}
-	if(idx1 == -1 || idx2 == -1){
-		cout << "NO" << endl;
-		return 0;
-	}
-	if(idx2 > idx1+1){
-		cout << "YES" << endl;
-		return 0;
-	}
-	idx1 = -1; idx2 = -1;
-	for(ll i=0; i<n-1; i++){
-		if(s[i] == 'B' && s[i+1] == 'A'){
-			idx1 = i;
-			break;
-		}
-	}
-	for(ll i=n-1; i>0; i--){
-		if(s[i] == 'B' && s[i-1] == 'A'){
-			idx2 = i-1;
-			break;
-		}
-	}
-	if(idx1 == -1 || idx2 == -1){
-		cout << "NO" << endl;
-		return 0;
-	}
-	if(idx2 > idx1+1){
-		cout << "YES" << endl;
-		return 0;
-	}
-	cout << "NO" << endl;
+int main() {
+    string s;
+    cin >> s;
+
+    int ab_idx = find_first(s, 0, "AB");
+    int ba_idx = find_first(s, ab_idx+2, "BA");
+
+    if (ab_idx < s.length() && ba_idx < s.length()) {
+	cout << "YES";
 	return 0;
+    }
+
+
+    ba_idx = find_first(s, 0, "BA");
+    ab_idx = find_first(s, ba_idx+2, "AB");
+
+    if (ab_idx < s.length() && ba_idx < s.length()) {
+	cout << "YES";
+	return 0;
+    }
+
+    cout << "NO";
+    return 0;
 }
